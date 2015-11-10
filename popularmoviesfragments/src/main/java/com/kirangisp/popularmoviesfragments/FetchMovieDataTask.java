@@ -21,7 +21,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * Async Task to get the movie data from the moviedb api.
+ * Async Task to get the movie data from the moviedb api. Same task is used
+ * for all types of requests.
  */
 public class FetchMovieDataTask extends AsyncTask<Void, Void, String> {
 
