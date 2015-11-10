@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/relativeLayoutHoldingFrameLayout"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.kirangisp.popularmoviesui.MoviePostersActivity"
+    tools:showIn="@layout/layout_movie_posters_activity">
+
+
+    <!--The layout file used in class MoviePostersActivity.java. This activity contains only one
+    child element, i.e. FrameLayout. This FrameLayout will hold the following fragment
+    layout file , layout_posters_gridview_fragment-->
+
+    <FrameLayout
+        android:id="@+id/container_for_movie_posters_fragment"
+        style="@style/frameLayoutHoldingPostersFragment" />
+</RelativeLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <!--Grid View Dimensions-->
+    <dimen name="hdpi_col_width">140dp</dimen>
+    <dimen name="hdpi_horizontal_spacing">7dp</dimen>
+    <dimen name="hdpi_vertical_spacing">7dp</dimen>
+    <dimen name="hdpi_top_margin">10dp</dimen>
+    <dimen name="hdpi_bottom_margin">10dp</dimen>
+    <dimen name="hdpi_left_margin">5dp</dimen>
+    <dimen name="hdpi_right_margin">5dp</dimen>
+
+    <!--Movie Title TExt View-->
+    <dimen name="movieTitleTextSize">30sp</dimen>
+
+    <!--Movie Poster Image View-->
+    <dimen name="posterImgViewLeftMargin">5dp</dimen>
+    <dimen name="posterImgViewTopMargin">5dp</dimen>
+
+    <!--Release Date Literal text-->
+    <dimen name="releaseDateTextLieralLeftMargin">10dp</dimen>
+    <dimen name="releaseDateTextLieralTopMargin">10dp</dimen>
+
+    <!--Release Date TExt view -->
+    <dimen name="releaseDateTextTextViewLeftMargin">10dp</dimen>
+    <dimen name="releaseDateTextTextViewTopMargin">5dp</dimen>
+
+    <!--Vote Literal text-->
+    <dimen name="voteTextLieralLeftMargin">10dp</dimen>
+    <dimen name="voteTextLieralTopMargin">10dp</dimen>
+
+    <!--Vote TExt view -->
+    <dimen name="voteTextTextViewLeftMargin">10dp</dimen>
+    <dimen name="voteTextTextViewTopMargin">5dp</dimen>
+
+    <!--Synlopsis Scroll view -->
+    <dimen name="synoScrollViewBottomMargin">5dp</dimen>
+    <dimen name="synoScrollViewTopmMargin">5dp</dimen>
+
+    <!--Synopsis scroll Text View-->
+    <dimen name="synoTextViewMargin">5dp</dimen>
+    <dimen name="synoTextViewPadding">5dp</dimen>
+
+</resources>

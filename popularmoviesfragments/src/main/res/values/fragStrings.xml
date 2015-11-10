@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Favorite Movies</string>
+
+    <!--The word Release Date, writen over actual Release Date Value-->
+    <string name="release_date">Release Date:</string>
+
+    <!--The word Release Date, writen over actual Vote Value-->
+    <string name="vote">Average Vote:</string>
+
+</resources>

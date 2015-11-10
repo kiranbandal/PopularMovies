@@ -1,0 +1,18 @@
+To insert the moviedb api key in the app, please follow the steps mentioned below;
+
+1. open the project "PopularMovies"in Android Studio, you will see number of different modules in the left pane like, 		app,commonobjects,dataobjects,popularmoviesactivities,popularmoviesfragments
+
+2. Expand the module "commonobjects" in the left pane
+
+3. Expand the "java" folder
+
+4. Expand the "com.example" package
+
+5. double click on the class "GlobalObjects" to view it's code
+
+6. Go to the line numner fourteen (14)
+
+7. Paste the working movie db api key in the place of "KEY_HERE" after the line,
+	public final static String MOVIE_API_KEY =
+
+8. Save the project and build it.
