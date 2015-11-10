@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * Created by User on 03-Nov-15.
+ * Async Task to getch the movie data from the moviedb api.
  */
 public class FetchMovieDataTask extends AsyncTask<Void, Void, String> {
 
