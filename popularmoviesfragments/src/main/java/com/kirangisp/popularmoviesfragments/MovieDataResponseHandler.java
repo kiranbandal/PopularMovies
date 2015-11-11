@@ -53,7 +53,13 @@ public class MovieDataResponseHandler {
             vote.setText(R.string.vote);
             voteTxtView.setText(movieDtls.getVote());
 
-            synopsisTxtView.setText(movieDtls.getSynopsis());
+            //If the sysnopsis returned is null, then
+            if (movieDtls.getSynopsis().toUpperCase().equals("NULL")){
+                synopsisTxtView.setText("No Synopsis Found!!");
+            }
+            else {
+                synopsisTxtView.setText(movieDtls.getSynopsis());
+            }
 
             //construct the url to getthe the movie thumbnail using Picasso
             String mMoviePosterBaseURL = GlobalObjects.getMoviePosterBaseURL();

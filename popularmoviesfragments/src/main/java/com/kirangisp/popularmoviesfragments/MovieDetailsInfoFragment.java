@@ -91,9 +91,11 @@ public class MovieDetailsInfoFragment extends Fragment {
 
             }
         } catch (NullPointerException e) {
-            Log.e("movieDetailsFragLogTag", "Null Reference Error occured in the method,setImageViewDimension(), error : " + e.getMessage());
+            Log.e("movieDetailsFragLogTag", "Null Reference Error occured in the method,setImageViewDimension(), error : " +
+                    e.getMessage());
         } catch (Exception e) {
-            Log.e("movieDetailsFragLogTag", "Error occured in the method,setImageViewDimension(), error : " + e.getMessage());
+            Log.e("movieDetailsFragLogTag", "Error occured in the method,setImageViewDimension(), error : " +
+                    e.getMessage());
         }
     }
 
