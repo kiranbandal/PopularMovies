@@ -63,6 +63,8 @@ public class MovieDetailsInfoFragment extends Fragment {
                     posterView.setMinimumHeight(150);
 
                 } else {
+
+                    //larger and medium screen size
                     posterView.setMinimumWidth(250);
                     posterView.setMinimumHeight(300);
                 }
