@@ -1,5 +1,6 @@
 package com.kirangisp.popularmoviesfragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,10 +27,9 @@ public class MovieDetailsInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        try{
+        try {
             mFragmenRoot = inflater.inflate(R.layout.layout_movie_details_fragment, container, false);
-        }
-        catch (InflateException ex){
+        } catch (InflateException ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Inflate Exception", "onCreateOptionsMenu()", ex.getMessage());
             Log.e(MOVIE_DETAILS_FRAG_LOG_TAG, errMsg);
         }
@@ -49,8 +49,26 @@ public class MovieDetailsInfoFragment extends Fragment {
             //handle the size of the movie poster image view here
             ImageView posterView = (ImageView) mFragmenRoot.findViewById(R.id.moviePosterImgView);
 
-            //load image into the movie poster image view using Picasso, resize it depending on te screen desneity
-            if (GlobalObjects.getDeviceDensity() == 1.5) {
+            //load image into the movie poster image view using Picasso, resize it depending on te screen density
+
+            //for LDPI and MDPI
+            if (GlobalObjects.getDeviceDensity() == 1.0) {
+
+                //get device screen size
+                int screenSize = getActivity().getResources().getConfiguration().screenLayout &
+                        Configuration.SCREENLAYOUT_SIZE_MASK;
+
+                if (screenSize == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+                    posterView.setMinimumWidth(130);
+                    posterView.setMinimumHeight(150);
+
+                } else {
+                    posterView.setMinimumWidth(250);
+                    posterView.setMinimumHeight(300);
+                }
+            }
+
+            else if (GlobalObjects.getDeviceDensity() == 1.5) {
                 //hdpi
                 posterView.setMinimumWidth(250);
                 posterView.setMinimumHeight(325);
@@ -71,10 +89,9 @@ public class MovieDetailsInfoFragment extends Fragment {
 
             }
         } catch (NullPointerException e) {
-            Log.e("movieDetailsFragLogTag","Null Reference Error occured in the method,setImageViewDimension(), error : " + e.getMessage());
-        }
-        catch (Exception e){
-            Log.e("movieDetailsFragLogTag","Error occured in the method,setImageViewDimension(), error : " + e.getMessage());
+            Log.e("movieDetailsFragLogTag", "Null Reference Error occured in the method,setImageViewDimension(), error : " + e.getMessage());
+        } catch (Exception e) {
+            Log.e("movieDetailsFragLogTag", "Error occured in the method,setImageViewDimension(), error : " + e.getMessage());
         }
     }
 
@@ -104,13 +121,10 @@ public class MovieDetailsInfoFragment extends Fragment {
             //execute the task
             new FetchMovieDataTask(rqst, getActivity()).execute();
 
-        }
-        catch (NullPointerException ex){
+        } catch (NullPointerException ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Null Pointer Exception", "onActivityCreated()", ex.getMessage());
             Log.e(MOVIE_DETAILS_FRAG_LOG_TAG, errMsg);
-        }
-
-        catch (Exception ex) {
+        } catch (Exception ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "onActivityCreated()", ex.getMessage());
             Log.e(MOVIE_DETAILS_FRAG_LOG_TAG, errMsg);
         }
