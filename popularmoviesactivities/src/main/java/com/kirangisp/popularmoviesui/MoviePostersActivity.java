@@ -105,7 +105,7 @@ public class MoviePostersActivity extends AppCompatActivity implements OnFragmen
 
             /*query the movie db api to get the movie data sorted on most popular
             * Construct the url by reading global constants file
-            * Sample query : http://api.themoviedb.org/3/discover/movie?&api_key=5254a84a6c18f9e3cbec007290ea297c&sort_by=popularity.desc
+            * Sample query : http://api.themoviedb.org/3/discover/movie?&api_key=KEY_HERE&sort_by=popularity.desc
             * */
 
             String sortMoviesOnPopularityURL = GlobalObjects.getPopularMoviesURL()
