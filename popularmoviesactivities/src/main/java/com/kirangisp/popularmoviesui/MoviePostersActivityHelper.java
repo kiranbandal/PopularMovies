@@ -1,6 +1,7 @@
 package com.kirangisp.popularmoviesui;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -14,9 +15,9 @@ public class MoviePostersActivityHelper {
 
     public static final String POSTERS_ACTIVITY_HELPER_CLASS_TAG = "POSTERS HELPER TAG";
 
-   /*
-   * Sets global objects like, Device Density, Poster ImgageView dimensions, Resize dimensions.
-   * */
+    /*
+    * Sets global objects like, Device Density, Poster ImgageView dimensions, Resize dimensions.
+    * */
     public static void setImageViewAndPosterResizeDimensions(Context appContext) {
 
         try {
@@ -32,7 +33,42 @@ public class MoviePostersActivityHelper {
             * and set movie poster image resize dimension
             * */
 
-            if (GlobalObjects.getDeviceDensity() == 1.5) {
+
+
+            if (GlobalObjects.getDeviceDensity() == 1.0) {
+
+                //get device screen size
+                int screenSize = appContext.getResources().getConfiguration().screenLayout &
+                        Configuration.SCREENLAYOUT_SIZE_MASK;
+
+                //Small screen
+                if (screenSize == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+
+                    //cater for small screen size
+                    GlobalObjects.setMoviePosterImgSize("w92/");
+                    GlobalObjects.setImgViewPadding("1");
+
+                    GlobalObjects.setImgViewHeight(135);
+                    GlobalObjects.setImgViewWidth(155);
+
+                    GlobalObjects.setPosterResizewWidth(130);
+                    GlobalObjects.setPosterResizewHeight(150);
+                }
+
+                else {
+                    //cater for large and medium screens
+                    GlobalObjects.setMoviePosterImgSize("w154/");
+                    GlobalObjects.setImgViewPadding("1");
+
+                    GlobalObjects.setImgViewHeight(265);
+                    GlobalObjects.setImgViewWidth(305);
+
+                    GlobalObjects.setPosterResizewWidth(245);
+                    GlobalObjects.setPosterResizewHeight(285);
+                }
+
+
+            } else if (GlobalObjects.getDeviceDensity() == 1.5) {
 
                 //if the device density is HDPI, e.g. Samsung Quattro
                 GlobalObjects.setMoviePosterImgSize("w185/");
@@ -80,6 +116,18 @@ public class MoviePostersActivityHelper {
 
                 GlobalObjects.setPosterResizewWidth(820);
                 GlobalObjects.setPosterResizewHeight(980);
+            }
+            else {
+
+                //cater for for remaining screen densities
+                GlobalObjects.setMoviePosterImgSize("w92/");
+                GlobalObjects.setImgViewPadding("1");
+
+                GlobalObjects.setImgViewHeight(135);
+                GlobalObjects.setImgViewWidth(155);
+
+                GlobalObjects.setPosterResizewWidth(130);
+                GlobalObjects.setPosterResizewHeight(150);
             }
         } catch (NullPointerException nullExc) {
 
