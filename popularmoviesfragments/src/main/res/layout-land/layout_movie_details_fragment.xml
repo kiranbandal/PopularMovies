@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--Title Text View   android:text="The Martian"-->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="I am landscape"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+        android:id="@+id/titleTextView"
+        style="@style/movieDetailsTitleTextView" />
+
+    <!--Movie Poster Image View   android:src="@drawable/martian"-->
+    <ImageView
+        android:id="@+id/moviePosterImgView"
+        style="@style/moviePosterImgVeu" />
+
+    <!--Release Date Literal   android:text="Release Date:"-->
+    <TextView
+        android:id="@+id/releaseDateTextLiteral"
+        style="@style/releaseDateLitralText" />
+
+    <!--Release Date TExt view   android:text="2015-10-02"-->
+    <TextView
+        android:id="@+id/releaseDateTextview"
+        style="@style/releaseDateTVt" />
+
+    <!--Vote Text Literal  android:text="Average Vote:"-->
+    <TextView
+        android:id="@+id/voteTextLiteral"
+        style="@style/voteLtrlText" />
+
+    <!--Vote Text View   android:text="7.7"-->
+    <TextView
+        android:id="@+id/voteTextView"
+        style="@style/voteTV" />
+
+    <!--Synopsis Text View-->
+    <ScrollView style="@style/synoScrollView">
+
+        <TextView
+            android:id="@+id/synopTextView"
+            style="@style/synoTVLandscape" />
+
+    </ScrollView>
 </RelativeLayout>
+
+
+</ScrollView>

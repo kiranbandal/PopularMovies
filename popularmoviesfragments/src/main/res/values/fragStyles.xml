@@ -114,5 +114,87 @@
         <item name="android:padding">@dimen/synoTextViewPadding</item>
     </style>
 
+    <!--****** Movie Info Details Layout Styles for Landscape Orientation Start *********-->
+
+
+    <!--Movie Title TExt View-->
+    <style name="movieDetailsTitleTextViewLandscape">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/blackColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/movieTitleTextSizeLandscape</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/whiteColor</item>
+    </style>
+
+    <!--Movie Poster Image View-->
+    <style name="moviePosterImgVeuLnadScape">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_below">@id/titleTextView</item>
+        <item name="android:layout_marginLeft">@dimen/posterImgViewLeftMarginLandscape</item>
+        <item name="android:layout_marginTop">@dimen/posterImgViewTopMarginLandscape</item>
+    </style>
+
+    <!--Release Date Literal text-->
+    <style name="releaseDateLitralTextLandscape">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@id/titleTextView</item>
+        <item name="android:layout_marginLeft">@dimen/releaseDateTextLieralLeftMarginLandscape</item>
+        <item name="android:layout_marginTop">@dimen/releaseDateTextLieralTopMarginLandscape</item>
+        <item name="android:layout_toRightOf">@id/moviePosterImgView</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--Release Date Text view   -->
+    <style name="releaseDateTVtLandscape">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@id/releaseDateTextLiteral</item>
+        <item name="android:layout_marginLeft">@dimen/releaseDateTextTextViewLeftMarginLandscape</item>
+        <item name="android:layout_marginTop">@dimen/releaseDateTextTextViewTopMarginLandscape</item>
+        <item name="android:layout_toRightOf">@id/moviePosterImgView</item>
+    </style>
+
+    <!--Vote Text Literal  -->
+    <style name="voteLtrlTextLandscape">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@id/releaseDateTextview</item>
+        <item name="android:layout_marginLeft">@dimen/voteTextLieralLeftMarginLandscape</item>
+        <item name="android:layout_marginTop">@dimen/voteTextLieralTopMarginLandscape</item>
+        <item name="android:layout_toRightOf">@id/moviePosterImgView</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--Vote Text View  -->
+    <style name="voteTVLandscape">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@id/voteTextLiteral</item>
+        <item name="android:layout_marginLeft">@dimen/voteTextTextViewLeftMarginLandscape</item>
+        <item name="android:layout_marginTop">@dimen/voteTextTextViewTopMarginLandscape</item>
+        <item name="android:layout_toRightOf">@id/moviePosterImgView</item>
+    </style>
+
+    <!--Synopsis scroll View-->
+    <style name="synoScrollViewLandscape">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@id/moviePosterImgView</item>
+        <item name="android:layout_marginBottom">@dimen/synoScrollViewBottomMarginLandscape</item>
+        <item name="android:layout_marginTop">@dimen/synoScrollViewTopmMarginLandscape</item>
+    </style>
+
+    <!--Synopsis scroll Text View-->
+    <style name="synoTVLandscape">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/synoTextViewMarginLandscape</item>
+        <item name="android:padding">@dimen/synoTextViewPaddingLandscape</item>
+    </style>
 
 </resources>

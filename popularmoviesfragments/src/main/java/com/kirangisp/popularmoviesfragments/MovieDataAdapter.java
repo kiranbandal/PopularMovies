@@ -76,16 +76,8 @@ public class MovieDataAdapter extends BaseAdapter {
                 // ImgaeView getting created for the first time
                 moviePosterImgView = new ImageView(mContext);
 
-
-                //read width abd height from global file
-//                moviePosterImgView.setLayoutParams(new GridView.LayoutParams
-//                        (Integer.parseInt(GlobalObjects.getBMPSize()), Integer.parseInt(GlobalObjects.getBMPSize())));
-
                 moviePosterImgView.setLayoutParams(new GridView.LayoutParams
                         (GlobalObjects.getImageviewWidth(), GlobalObjects.getImageViewHeight()));
-
-
-                //moviePosterImgView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
                 //read padding value from global class and set it on the ImageView
                 int imgViewPadding = Integer.parseInt(GlobalObjects.getImageviewPadding());
