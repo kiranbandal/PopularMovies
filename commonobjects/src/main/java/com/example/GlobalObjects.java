@@ -11,7 +11,7 @@ public class GlobalObjects {
     //endregion
 
     //region Movies DB API Key
-    public final static String MOVIE_API_KEY = "KEY_HERE";
+    public final static String MOVIE_API_KEY = "5254a84a6c18f9e3cbec007290ea297c";
 
     public static String getMovieApiKey() {
         return MOVIE_API_KEY;
@@ -214,4 +214,50 @@ public class GlobalObjects {
         return returnErrorMessage;
     }
     //endregion
+
+
+
+    //region View ID Keys to be used in HashMap
+    public static final String TITLE_TEXT_VIEW_KEY = "titleTV";
+    public static String getTitleTextViewKey() {
+        return TITLE_TEXT_VIEW_KEY;
+    }
+
+    public static final String RELEASE_DATE_TEXT_VIEW_KEY = "releaseDateTV";
+    public static String getReleaseDateTextViewKey() {
+        return RELEASE_DATE_TEXT_VIEW_KEY;
+    }
+
+    public static final String VOTE_TEXT_VIEW_KEY = "voteTV";
+    public static String getVoteTextViewKey() {
+        return VOTE_TEXT_VIEW_KEY;
+    }
+
+    public static final String SYNOPSIS_TEXT_VIEW_KEY = "synopsisTV";
+    public static String getSynopsisTextViewKey() {
+        return SYNOPSIS_TEXT_VIEW_KEY;
+    }
+
+    public static final String RELEASE_DATE_LITERAL_TEXT_VIEW_KEY = "releaseDateLiteralTV";
+    public static String getReleaseDateLiteralTextViewKey() {
+        return RELEASE_DATE_LITERAL_TEXT_VIEW_KEY;
+    }
+
+    public static final String VOTE_LITERAL_TEXT_VIEW_KEY = "voteLiteralTV";
+    public static String getVoteLiteralTextViewKey() {
+        return VOTE_LITERAL_TEXT_VIEW_KEY;
+    }
+
+    public static final String POSTER_IMG_VIEW_KEY = "poserImgView";
+    public static String getPosterImageViewKey() {
+        return POSTER_IMG_VIEW_KEY;
+    }
+    //endregion
+
+
+
+
+
+
+
 }
