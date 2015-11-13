@@ -43,7 +43,7 @@
                 android:id="@+id/synopTextView"
                 style="@style/synoTV"/>
 
-        </ScrollView>\
+        </ScrollView>
     </RelativeLayout>
 
 </ScrollView>
