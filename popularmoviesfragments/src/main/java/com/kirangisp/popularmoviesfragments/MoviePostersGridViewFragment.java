@@ -15,6 +15,8 @@ import android.widget.GridView;
 import com.example.FetchMovieRequest;
 import com.example.FetchMovieRequestType;
 import com.example.GlobalObjects;
+import com.kirangisp.fragmenthelpermodule.MoviePostersFragmentHelper;
+
 
 /**
  * Created by User on 03-Nov-15.
@@ -24,6 +26,13 @@ public class MoviePostersGridViewFragment extends Fragment {
     private final static String POSTERS_GRIDVIEW_FRAGMENT_LOg_TAG = "Posters Grid Fragment";
     private OnFragmentReady mListener; //interface instance to notify the Parent activity when this fragment is ready.
     View fragmentRootView;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+    }
 
     @Nullable
     @Override
@@ -44,6 +53,12 @@ public class MoviePostersGridViewFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         try{
+
+            /*set global Running Device properties like
+            * Device density, orientation,
+            * */
+            MoviePostersFragmentHelper.setGlobalDeviceImgeViewProps(getActivity());
+
             //here we have to read the URL value from Global Constants
             String getPopularMoviesURL = GlobalObjects.getPopularMoviesURL() + GlobalObjects.getMovieApiKey();
 

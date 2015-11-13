@@ -29,4 +29,5 @@ dependencies {
     compile project(':commonobjects')
     compile project(':dataobjects')
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile project(':fragmenthelpermodule')
 }
