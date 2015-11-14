@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/commonobjects" />
             <option value="$PROJECT_DIR$/dataobjects" />
+            <option value="$PROJECT_DIR$/fragmenthelpermodule" />
             <option value="$PROJECT_DIR$/popularmoviesactivities" />
             <option value="$PROJECT_DIR$/popularmoviesfragments" />
           </set>

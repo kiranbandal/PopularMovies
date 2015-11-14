@@ -78,51 +78,29 @@ public class MovieResponseHandler {
 
             try {
                 //load image into the movie poster image view using Picasso, resize it depending on te screen desneity
-                if (GlobalObjects.getDeviceDensity() == 1.5) {
-                    //hdpi
-                    Picasso.with(appContext).load(posterURL).resize(250, 325).into(moviePosterImgView);
-                } else if (GlobalObjects.getDeviceDensity() == 2) {
-                    //x hdpi
-                    Picasso.with(appContext).load(posterURL).resize(400, 525).into(moviePosterImgView);
-                } else if (GlobalObjects.getDeviceDensity() == 3) {
-                    //xx hdpi
-                    Picasso.with(appContext).load(posterURL).resize(600, 825).into(moviePosterImgView);
-                } else if (GlobalObjects.getDeviceDensity() == 4) {
-                    //xxx hdpi, higer then nexux 5
-                    Picasso.with(appContext).load(posterURL).resize(800, 1000).into(moviePosterImgView);
-                } else {
-                    Picasso.with(appContext).load(posterURL).into(moviePosterImgView);
-                }
-            }
-
-            catch (ClassCastException ex){
+                Picasso.with(appContext).load(posterURL).resize(
+                        RunningDevice.getMovieDetailsPosterResizeWidth(),
+                        RunningDevice.getMovieDetailsPosterResizeHeight())
+                        .into(moviePosterImgView);
+            } catch (ClassCastException ex) {
                 String errMsg = GlobalObjects.constructErrorMsg("Class Cast Exception",
                         "displayMovieDetails()", ex.getMessage());
                 Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-            }
-            catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 String errMsg = GlobalObjects.constructErrorMsg("Picasso IllegalArgumentException",
                         "Picasso.with()", e.getMessage());
                 Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-            }
-
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 String errMsg = GlobalObjects.constructErrorMsg("Picasso Generic Exception", "Picasso.with()()", ex.getMessage());
                 Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
             }
-        }
-
-        catch (NullPointerException ex) {
+        } catch (NullPointerException ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Null Pointer Exception", "displayMovieDetailsNew()", ex.getMessage());
             Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-        }
-
-        catch (WindowManager.BadTokenException ex) {
+        } catch (WindowManager.BadTokenException ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Bad Token Exception", "displayMovieDetailsNew()", ex.getMessage());
             Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-        }
-
-        catch (Exception ex) {
+        } catch (Exception ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "displayMovieDetailsNew()", ex.getMessage());
             Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
         }
@@ -137,13 +115,10 @@ public class MovieResponseHandler {
 
             GridView postersGridView = (GridView) ((Activity) context).findViewById(moviePostersGridView);
             postersGridView.setAdapter(new MovieDataCustomAdapter(context, moviePostersDataInList));
-        }
-
-        catch (WindowManager.BadTokenException ex) {
+        } catch (WindowManager.BadTokenException ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Bad Token Exception", "displayMoviePosters()", ex.getMessage());
             Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "displayMoviePosters()", ex.getMessage());
             Log.e(MOVIE_RESPONSE_HANDLER_LOG_TAG, errMsg);
         }

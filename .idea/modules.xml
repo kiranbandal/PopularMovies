@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonobjects/commonobjects.iml" filepath="$PROJECT_DIR$/commonobjects/commonobjects.iml" />
       <module fileurl="file://$PROJECT_DIR$/dataobjects/dataobjects.iml" filepath="$PROJECT_DIR$/dataobjects/dataobjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragmenthelpermodule/fragmenthelpermodule.iml" filepath="$PROJECT_DIR$/fragmenthelpermodule/fragmenthelpermodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/popularmoviesactivities/popularmoviesactivities.iml" filepath="$PROJECT_DIR$/popularmoviesactivities/popularmoviesactivities.iml" />
       <module fileurl="file://$PROJECT_DIR$/popularmoviesfragments/popularmoviesfragments.iml" filepath="$PROJECT_DIR$/popularmoviesfragments/popularmoviesfragments.iml" />
     </modules>

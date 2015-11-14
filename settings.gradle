@@ -1,1 +1,1 @@
-include ':app', ':popularmoviesactivities', ':commonobjects', ':dataobjects', ':popularmoviesfragments'
+include ':app', ':popularmoviesactivities', ':commonobjects', ':dataobjects', ':popularmoviesfragments', ':fragmenthelpermodule'

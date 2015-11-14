@@ -124,4 +124,26 @@ public class RunningDevice {
     private static int posterImgViewPadding;
     //endregion
 
+    //region Height and Width used in Movie Detail Fragment
+    public static int getMovieDetailsPosterResizeWidth() {
+        return movieDetailsPosterResizeWidth;
+    }
+
+    public static void setMovieDetailsPosterResizeWidth(int resizeWidth) {
+        movieDetailsPosterResizeWidth = resizeWidth;
+    }
+
+    public static int getMovieDetailsPosterResizeHeight() {
+        return movieDetailsPosterResizeHeight;
+    }
+
+    public static void setMovieDetailsPosterResizeHeight(int resizeHeight) {
+        movieDetailsPosterResizeHeight = resizeHeight;
+    }
+
+    private static int movieDetailsPosterResizeWidth;
+    private static int movieDetailsPosterResizeHeight;
+    //endregion
+
+
 }

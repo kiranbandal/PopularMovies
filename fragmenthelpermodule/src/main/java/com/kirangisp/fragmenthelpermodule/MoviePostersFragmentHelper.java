@@ -256,6 +256,10 @@ public class MoviePostersFragmentHelper {
                 //Small screen (LDPI and MDPI)
                 if (screenSize == Configuration.SCREENLAYOUT_SIZE_SMALL) {
 
+                    //Set resize dimensions for Movie Details Fragment
+                    RunningDevice.setMovieDetailsPosterResizeWidth(250);
+                    RunningDevice.setMovieDetailsPosterResizeHeight(325);
+
                     if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
                         setLdpiMdpiSmallScreenPortraitProps();
                     } else {
@@ -293,6 +297,10 @@ public class MoviePostersFragmentHelper {
             //if the device density is HDPI, e.g. Samsung Quattro
             else if (runningDeviceDensity == 1.5) {
 
+                //Set resize dimensions for Movie Details Fragment
+                RunningDevice.setMovieDetailsPosterResizeWidth(250);
+                RunningDevice.setMovieDetailsPosterResizeHeight(325);
+
                 if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
                     setHDPIPortraitProps();
                 } else {
@@ -302,6 +310,10 @@ public class MoviePostersFragmentHelper {
 
             //if the device density is xHDPI, Nexus 4
             else if (runningDeviceDensity == 2) {
+
+                //Set resize dimensions for Movie Details Fragment
+                RunningDevice.setMovieDetailsPosterResizeWidth(400);
+                RunningDevice.setMovieDetailsPosterResizeHeight(525);
 
                 if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
                     setXHDPIPortraitProps();
@@ -313,6 +325,11 @@ public class MoviePostersFragmentHelper {
 
             //if the device density is xxHDPI, Nexus 5
             else if (runningDeviceDensity == 3) {
+
+                //Set resize dimensions for Movie Details Fragment
+                RunningDevice.setMovieDetailsPosterResizeWidth(600);
+                RunningDevice.setMovieDetailsPosterResizeHeight(825);
+
                 if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
                     setXxHDPIPortraitProps();
                 } else {
@@ -321,6 +338,10 @@ public class MoviePostersFragmentHelper {
             }
             //if the device density is xxxHDPI, My S6
             else if (runningDeviceDensity == 4) {
+
+                //Set resize dimensions for Movie Details Fragment
+                RunningDevice.setMovieDetailsPosterResizeWidth(800);
+                RunningDevice.setMovieDetailsPosterResizeHeight(1000);
 
                 if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
                     setXxxHDPIPortraitProps();

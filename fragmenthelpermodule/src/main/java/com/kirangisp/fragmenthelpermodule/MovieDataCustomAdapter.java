@@ -110,10 +110,10 @@ public class MovieDataCustomAdapter extends BaseAdapter {
                 setErrorDrawable();
             }
 
-
             //load image into the movie poster image view using Picasso
             Picasso.with(mContext).load(posterURL)
                     .placeholder(mPlaceHolderDrawable)
+                    .error(mErrorDrawable)
                     .resize(RunningDevice.getMoviePosterResizeWidth(),
                             RunningDevice.getMoviePosterResizeHeight())
                     .into(moviePosterImgView);
