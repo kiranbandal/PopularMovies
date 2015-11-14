@@ -11,7 +11,7 @@ public class GlobalObjects {
     //endregion
 
     //region Movies DB API Key
-    public final static String MOVIE_API_KEY = "5254a84a6c18f9e3cbec007290ea297c";
+    public final static String MOVIE_API_KEY = "KEY_HERE";
 
     public static String getMovieApiKey() {
         return MOVIE_API_KEY;
