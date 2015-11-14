@@ -8,12 +8,49 @@ import android.util.Log;
 import com.example.GlobalObjects;
 
 /**
- * Created by User on 13-Nov-15.
+ * Helper class to set the global properties of device sensity, orientation
+ * movie poster imageview size and re-size dimensions
  */
 public class MoviePostersFragmentHelper {
 
     private static final String PSTRS_FRAG_HLPR_LOG_TAG = "Posters Fragment Helper";
 
+    //region For xxx HPI
+    private static void setXxxHDPIPortraitProps(){
+
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w780/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(5);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(830);
+        RunningDevice.setMoviePosterImgViewWidth(1000);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(980);
+        RunningDevice.setMoviePosterResizeWidth(820);
+    }
+
+    private static void setXxxHDPILandscapeProps(){
+        //
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("original");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(3);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(1275);
+        RunningDevice.setMoviePosterImgViewWidth(1090);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(1260);
+        RunningDevice.setMoviePosterResizeWidth(1080);
+
+    }
+    //endregion
     //region For XX HDPI
     private static void setXxHDPIPortraitProps() {
 
@@ -123,6 +160,7 @@ public class MoviePostersFragmentHelper {
     }
     //endregion
 
+    //region LDPI and MDPI - Small screen
     private static void setLdpiMdpiSmallScreenPortraitProps() {
         //image size to be queried from the movie db api
         RunningDevice.setImgSizeToBeQueried("w92/");
@@ -154,6 +192,42 @@ public class MoviePostersFragmentHelper {
         RunningDevice.setMoviePosterResizeHeight(150);
         RunningDevice.setMoviePosterResizeWidth(130);
     }
+    //endregion
+
+    //region For LDPI and MDPI - Large screen
+    private static void setLdpiMdpiLargecreenPortraitProps() {
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w92/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(1);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(135);
+        RunningDevice.setMoviePosterImgViewWidth(155);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(150);
+        RunningDevice.setMoviePosterResizeWidth(130);
+    }
+
+    private static void setLdpiMdpiLargecreenLandscapeProps() {
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w92/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(1);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(135);
+        RunningDevice.setMoviePosterImgViewWidth(155);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(150);
+        RunningDevice.setMoviePosterResizeWidth(130);
+    }
+    //endregion
+
 
     public static void setGlobalDeviceImgeViewProps(Context appContext) {
 
@@ -188,11 +262,9 @@ public class MoviePostersFragmentHelper {
                         setLdpiMdpiSmallScreenLandscapeProps();
                     }
 
-
                 } else {
                     //medium and large screen (LDPI and MDPI)
-
-                    if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
+                    if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.LANDSCAPE) {
 
                         //Portrait orientation
                         //image size to be queried from the movie db api
@@ -250,20 +322,14 @@ public class MoviePostersFragmentHelper {
             //if the device density is xxxHDPI, My S6
             else if (runningDeviceDensity == 4) {
 
-                //image size to be queried from the movie db api
-                RunningDevice.setImgSizeToBeQueried("w780/");
+                if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
+                    setXxxHDPIPortraitProps();
+                } else {
+                    setXxxHDPILandscapeProps();
+                }
+            }
 
-                //set Image View Padding
-                RunningDevice.setPosterImgViewPadding(5);
-
-                //set poster image view height and width
-                RunningDevice.setMoviePosterImgViewHeight(830);
-                RunningDevice.setMoviePosterImgViewWidth(1000);
-
-                //set resize width/height of the image
-                RunningDevice.setMoviePosterResizeHeight(980);
-                RunningDevice.setMoviePosterResizeWidth(820);
-            } else {
+            else {
                 //cater for for remaining screen densities
                 //image size to be queried from the movie db api
                 RunningDevice.setImgSizeToBeQueried("w185/");

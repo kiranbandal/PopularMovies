@@ -1,6 +1,10 @@
 package com.kirangisp.fragmenthelpermodule;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +31,9 @@ public class MovieDataCustomAdapter extends BaseAdapter {
     private String mPosterImageSize;
 
     private final static String MOVIE_ADAPATER_LOG_TAG = "Movie Custom Adapter";
+
+    private Drawable mPlaceHolderDrawable = null;
+    private Drawable mErrorDrawable = null;
 
     public MovieDataCustomAdapter(Context c, ArrayList<MovieData> movieDataList) {
         //set member variables
@@ -93,8 +100,20 @@ public class MovieDataCustomAdapter extends BaseAdapter {
             //arratch the Movie Id as a Tag, so that it can be referred in detail activity
             moviePosterImgView.setTag(mMovieDataList.get(position).getMovieIDInAPI());
 
+            //set the Place holder image from Drawable if not set already
+            if (mPlaceHolderDrawable == null) {
+                setPlaceHolderDrawable();
+            }
+
+            //set the Place holder image from Drawable if not set already
+            if (mErrorDrawable == null) {
+                setErrorDrawable();
+            }
+
+
             //load image into the movie poster image view using Picasso
             Picasso.with(mContext).load(posterURL)
+                    .placeholder(mPlaceHolderDrawable)
                     .resize(RunningDevice.getMoviePosterResizeWidth(),
                             RunningDevice.getMoviePosterResizeHeight())
                     .into(moviePosterImgView);
@@ -110,6 +129,34 @@ public class MovieDataCustomAdapter extends BaseAdapter {
             String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "getView()", e.getMessage());
             Log.e(MOVIE_ADAPATER_LOG_TAG, errMsg);
             return null;
+        }
+    }
+
+    private void setPlaceHolderDrawable() {
+        try {
+            //get Place holder image from Drawable
+            Bitmap placeHolderBMP = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.placeholder);
+            Bitmap resizedPlaceHolderBMP = Bitmap.createScaledBitmap(placeHolderBMP, RunningDevice.getMoviePosterResizeWidth(),
+                    RunningDevice.getMoviePosterResizeHeight(), true);
+            mPlaceHolderDrawable = new BitmapDrawable(mContext.getResources(), resizedPlaceHolderBMP);
+
+        } catch (Exception e) {
+            String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "setPlaceHolderDrawble", e.getMessage());
+            Log.e(MOVIE_ADAPATER_LOG_TAG, errMsg);
+        }
+    }
+
+    private void setErrorDrawable() {
+        try {
+            //get Place holder image from Drawable
+            Bitmap errorBMP = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.error);
+            Bitmap resizedErrorBMP = Bitmap.createScaledBitmap(errorBMP, RunningDevice.getMoviePosterResizeWidth(),
+                    RunningDevice.getMoviePosterResizeHeight(), true);
+            mErrorDrawable = new BitmapDrawable(mContext.getResources(), resizedErrorBMP);
+
+        } catch (Exception e) {
+            String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "setErrorDrawable", e.getMessage());
+            Log.e(MOVIE_ADAPATER_LOG_TAG, errMsg);
         }
     }
 }
