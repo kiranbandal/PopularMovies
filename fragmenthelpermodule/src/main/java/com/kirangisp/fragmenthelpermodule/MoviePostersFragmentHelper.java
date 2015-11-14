@@ -14,6 +14,147 @@ public class MoviePostersFragmentHelper {
 
     private static final String PSTRS_FRAG_HLPR_LOG_TAG = "Posters Fragment Helper";
 
+    //region For XX HDPI
+    private static void setXxHDPIPortraitProps() {
+
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w500/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(4);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(630);
+        RunningDevice.setMoviePosterImgViewWidth(800);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(755);
+        RunningDevice.setMoviePosterResizeWidth(615);
+
+    }
+
+    private static void setXxHDPILandscapeProps() {
+
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w780/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(3);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(990);
+        RunningDevice.setMoviePosterImgViewWidth(815);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(990);
+        RunningDevice.setMoviePosterResizeWidth(815);
+
+    }
+    //endregion
+
+    //region For xHDPI
+    private static void setXHDPIPortraitProps() {
+
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w342/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(3);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(405);
+        RunningDevice.setMoviePosterImgViewWidth(495);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(438);
+        RunningDevice.setMoviePosterResizeWidth(395);
+    }
+
+    private static void setXHDPILandscapeProps() {
+
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w500/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(2);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(700);
+        RunningDevice.setMoviePosterImgViewWidth(550);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(680);
+        RunningDevice.setMoviePosterResizeWidth(550);
+    }
+    //endregion
+
+    //region For HDPI
+    private static void setHDPIPortraitProps() {
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w185/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(1);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(265);
+        RunningDevice.setMoviePosterImgViewWidth(305);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(285);
+        RunningDevice.setMoviePosterResizeWidth(245);
+    }
+
+    private static void setHDPILandscapeProps() {
+
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w342/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(3);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(450);
+        RunningDevice.setMoviePosterImgViewWidth(375);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(430);
+        RunningDevice.setMoviePosterResizeWidth(360);
+    }
+    //endregion
+
+    private static void setLdpiMdpiSmallScreenPortraitProps() {
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w92/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(1);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(135);
+        RunningDevice.setMoviePosterImgViewWidth(155);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(150);
+        RunningDevice.setMoviePosterResizeWidth(130);
+    }
+
+    private static void setLdpiMdpiSmallScreenLandscapeProps() {
+        //image size to be queried from the movie db api
+        RunningDevice.setImgSizeToBeQueried("w92/");
+
+        //set Image View Padding
+        RunningDevice.setPosterImgViewPadding(1);
+
+        //set poster image view height and width
+        RunningDevice.setMoviePosterImgViewHeight(135);
+        RunningDevice.setMoviePosterImgViewWidth(155);
+
+        //set resize width/height of the image
+        RunningDevice.setMoviePosterResizeHeight(150);
+        RunningDevice.setMoviePosterResizeWidth(130);
+    }
+
     public static void setGlobalDeviceImgeViewProps(Context appContext) {
 
         try {
@@ -28,11 +169,10 @@ public class MoviePostersFragmentHelper {
                     Configuration.SCREENLAYOUT_SIZE_MASK;
 
             //set current device orientation
-            if (((Activity)appContext).getResources().getConfiguration().orientation == 1){
+            if (((Activity) appContext).getResources().getConfiguration().orientation == 1) {
 
                 RunningDevice.setOrientation(RunningDevice.DeviceOrientation.PORTRAIT);
-            }
-            else if(((Activity)appContext).getResources().getConfiguration().orientation == 2){
+            } else if (((Activity) appContext).getResources().getConfiguration().orientation == 2) {
                 RunningDevice.setOrientation(RunningDevice.DeviceOrientation.LANDSCAPE);
             }
 
@@ -42,94 +182,73 @@ public class MoviePostersFragmentHelper {
                 //Small screen (LDPI and MDPI)
                 if (screenSize == Configuration.SCREENLAYOUT_SIZE_SMALL) {
 
-                    //image size to be queried from the movie db api
-                    RunningDevice.setImgSizeToBeQueried("w92/");
+                    if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
+                        setLdpiMdpiSmallScreenPortraitProps();
+                    } else {
+                        setLdpiMdpiSmallScreenLandscapeProps();
+                    }
 
-                    //set Image View Padding
-                    RunningDevice.setPosterImgViewPadding(1);
 
-                    //set poster image view height and width
-                    RunningDevice.setMoviePosterImgViewHeight(135);
-                    RunningDevice.setMoviePosterImgViewWidth(155);
-
-                    //set resize width/height of the image
-                    RunningDevice.setMoviePosterResizeHeight(150);
-                    RunningDevice.setMoviePosterResizeWidth(130);
-
-                }
-                else {
+                } else {
                     //medium and large screen (LDPI and MDPI)
 
-                    //image size to be queried from the movie db api
-                    RunningDevice.setImgSizeToBeQueried("w154/");
+                    if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
 
-                    //set Image View Padding
-                    RunningDevice.setPosterImgViewPadding(1);
+                        //Portrait orientation
+                        //image size to be queried from the movie db api
+                        RunningDevice.setImgSizeToBeQueried("w154/");
 
-                    //set poster image view height and width
-                    RunningDevice.setMoviePosterImgViewHeight(265);
-                    RunningDevice.setMoviePosterImgViewWidth(305);
+                        //set Image View Padding
+                        RunningDevice.setPosterImgViewPadding(1);
 
-                    //set resize width/height of the image
-                    RunningDevice.setMoviePosterResizeHeight(285);
-                    RunningDevice.setMoviePosterResizeWidth(245);
+                        //set poster image view height and width
+                        RunningDevice.setMoviePosterImgViewHeight(265);
+                        RunningDevice.setMoviePosterImgViewWidth(305);
+
+                        //set resize width/height of the image
+                        RunningDevice.setMoviePosterResizeHeight(285);
+                        RunningDevice.setMoviePosterResizeWidth(245);
+                    } else {
+
+                        //for landscape orientation
+
+                        String a;
+                        a = "sdf";
+                    }
+
                 }
             }
             //if the device density is HDPI, e.g. Samsung Quattro
-            else if(runningDeviceDensity == 1.5){
+            else if (runningDeviceDensity == 1.5) {
 
-                //image size to be queried from the movie db api
-                RunningDevice.setImgSizeToBeQueried("w185/");
-
-                //set Image View Padding
-                RunningDevice.setPosterImgViewPadding(1);
-
-                //set poster image view height and width
-                RunningDevice.setMoviePosterImgViewHeight(265);
-                RunningDevice.setMoviePosterImgViewWidth(305);
-
-                //set resize width/height of the image
-                RunningDevice.setMoviePosterResizeHeight(285);
-                RunningDevice.setMoviePosterResizeWidth(245);
+                if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
+                    setHDPIPortraitProps();
+                } else {
+                    setHDPILandscapeProps();
+                }
             }
 
             //if the device density is xHDPI, Nexus 4
-            else if(runningDeviceDensity == 2){
+            else if (runningDeviceDensity == 2) {
 
-                //image size to be queried from the movie db api
-                RunningDevice.setImgSizeToBeQueried("w342/");
-
-                //set Image View Padding
-                RunningDevice.setPosterImgViewPadding(3);
-
-                //set poster image view height and width
-                RunningDevice.setMoviePosterImgViewHeight(405);
-                RunningDevice.setMoviePosterImgViewWidth(495);
-
-                //set resize width/height of the image
-                RunningDevice.setMoviePosterResizeHeight(438);
-                RunningDevice.setMoviePosterResizeWidth(395);
+                if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
+                    setXHDPIPortraitProps();
+                } else {
+                    //For Landscape orientation
+                    setXHDPILandscapeProps();
+                }
             }
 
             //if the device density is xxHDPI, Nexus 5
-            else if(runningDeviceDensity == 3){
-
-                //image size to be queried from the movie db api
-                RunningDevice.setImgSizeToBeQueried("w500/");
-
-                //set Image View Padding
-                RunningDevice.setPosterImgViewPadding(4);
-
-                //set poster image view height and width
-                RunningDevice.setMoviePosterImgViewHeight(630);
-                RunningDevice.setMoviePosterImgViewWidth(800);
-
-                //set resize width/height of the image
-                RunningDevice.setMoviePosterResizeHeight(755);
-                RunningDevice.setMoviePosterResizeWidth(615);
+            else if (runningDeviceDensity == 3) {
+                if (RunningDevice.getOrientation() == RunningDevice.DeviceOrientation.PORTRAIT) {
+                    setXxHDPIPortraitProps();
+                } else {
+                    setXxHDPILandscapeProps();
+                }
             }
             //if the device density is xxxHDPI, My S6
-            else if(runningDeviceDensity == 4){
+            else if (runningDeviceDensity == 4) {
 
                 //image size to be queried from the movie db api
                 RunningDevice.setImgSizeToBeQueried("w780/");
@@ -144,9 +263,7 @@ public class MoviePostersFragmentHelper {
                 //set resize width/height of the image
                 RunningDevice.setMoviePosterResizeHeight(980);
                 RunningDevice.setMoviePosterResizeWidth(820);
-            }
-
-            else {
+            } else {
                 //cater for for remaining screen densities
                 //image size to be queried from the movie db api
                 RunningDevice.setImgSizeToBeQueried("w185/");
@@ -163,9 +280,7 @@ public class MoviePostersFragmentHelper {
                 RunningDevice.setMoviePosterResizeWidth(245);
             }
 
-        }
-
-        catch (NullPointerException nullEx) {
+        } catch (NullPointerException nullEx) {
 
             String errMsg = GlobalObjects.constructErrorMsg("Null Pointer Exception ",
                     "setGlobalDeviceImgeViewProps()",
@@ -186,9 +301,7 @@ public class MoviePostersFragmentHelper {
             RunningDevice.setMoviePosterResizeHeight(285);
             RunningDevice.setMoviePosterResizeWidth(245);
 
-        }
-
-        catch (Exception ex) {
+        } catch (Exception ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Generic Exception ",
                     "setGlobalDeviceImgeViewProps()",
                     ex.getMessage());

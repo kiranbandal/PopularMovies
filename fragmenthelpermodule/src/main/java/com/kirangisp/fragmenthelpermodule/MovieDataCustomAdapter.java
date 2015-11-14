@@ -76,10 +76,11 @@ public class MovieDataCustomAdapter extends BaseAdapter {
                 moviePosterImgView = new ImageView(mContext);
 
                 moviePosterImgView.setLayoutParams(new GridView.LayoutParams
-                        (GlobalObjects.getImageviewWidth(), GlobalObjects.getImageViewHeight()));
+                        (RunningDevice.getMoviePosterImgViewWidth(),
+                                RunningDevice.getMoviePosterImgViewHeight()));
 
                 //read padding value from global class and set it on the ImageView
-                int imgViewPadding = Integer.parseInt(GlobalObjects.getImageviewPadding());
+                int imgViewPadding = RunningDevice.getPosterImgViewPadding();
                 moviePosterImgView.setPadding(imgViewPadding,
                         imgViewPadding,
                         imgViewPadding,
@@ -94,21 +95,18 @@ public class MovieDataCustomAdapter extends BaseAdapter {
 
             //load image into the movie poster image view using Picasso
             Picasso.with(mContext).load(posterURL)
-                    .resize(GlobalObjects.getPosterResizeWidth(),
-                            GlobalObjects.getPosterResizewHeight())
+                    .resize(RunningDevice.getMoviePosterResizeWidth(),
+                            RunningDevice.getMoviePosterResizeHeight())
                     .into(moviePosterImgView);
 
             //moviePosterImgView.setImageResource(R.drawable.sample_0);
             return moviePosterImgView;
 
-        }
-        catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             String errMsg = GlobalObjects.constructErrorMsg("Null Pointer Exception", "getView()", e.getMessage());
             Log.e(MOVIE_ADAPATER_LOG_TAG, errMsg);
             return null;
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "getView()", e.getMessage());
             Log.e(MOVIE_ADAPATER_LOG_TAG, errMsg);
             return null;
