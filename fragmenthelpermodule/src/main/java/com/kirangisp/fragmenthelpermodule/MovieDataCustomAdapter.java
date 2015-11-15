@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,7 +13,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.example.GlobalObjects;
-import com.example.MovieData;
+import com.example.RunningDeviceProps;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -83,11 +82,11 @@ public class MovieDataCustomAdapter extends BaseAdapter {
                 moviePosterImgView = new ImageView(mContext);
 
                 moviePosterImgView.setLayoutParams(new GridView.LayoutParams
-                        (RunningDevice.getMoviePosterImgViewWidth(),
-                                RunningDevice.getMoviePosterImgViewHeight()));
+                        (RunningDeviceProps.getMoviePosterImgViewWidth(),
+                                RunningDeviceProps.getMoviePosterImgViewHeight()));
 
                 //read padding value from global class and set it on the ImageView
-                int imgViewPadding = RunningDevice.getPosterImgViewPadding();
+                int imgViewPadding = RunningDeviceProps.getPosterImgViewPadding();
                 moviePosterImgView.setPadding(imgViewPadding,
                         imgViewPadding,
                         imgViewPadding,
@@ -114,8 +113,8 @@ public class MovieDataCustomAdapter extends BaseAdapter {
             Picasso.with(mContext).load(posterURL)
                     .placeholder(mPlaceHolderDrawable)
                     .error(mErrorDrawable)
-                    .resize(RunningDevice.getMoviePosterResizeWidth(),
-                            RunningDevice.getMoviePosterResizeHeight())
+                    .resize(RunningDeviceProps.getMoviePosterResizeWidth(),
+                            RunningDeviceProps.getMoviePosterResizeHeight())
                     .into(moviePosterImgView);
 
             //moviePosterImgView.setImageResource(R.drawable.sample_0);
@@ -136,8 +135,8 @@ public class MovieDataCustomAdapter extends BaseAdapter {
         try {
             //get Place holder image from Drawable
             Bitmap placeHolderBMP = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.placeholder);
-            Bitmap resizedPlaceHolderBMP = Bitmap.createScaledBitmap(placeHolderBMP, RunningDevice.getMoviePosterResizeWidth(),
-                    RunningDevice.getMoviePosterResizeHeight(), true);
+            Bitmap resizedPlaceHolderBMP = Bitmap.createScaledBitmap(placeHolderBMP, RunningDeviceProps.getMoviePosterResizeWidth(),
+                    RunningDeviceProps.getMoviePosterResizeHeight(), true);
             mPlaceHolderDrawable = new BitmapDrawable(mContext.getResources(), resizedPlaceHolderBMP);
 
         } catch (Exception e) {
@@ -150,8 +149,8 @@ public class MovieDataCustomAdapter extends BaseAdapter {
         try {
             //get Place holder image from Drawable
             Bitmap errorBMP = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.error);
-            Bitmap resizedErrorBMP = Bitmap.createScaledBitmap(errorBMP, RunningDevice.getMoviePosterResizeWidth(),
-                    RunningDevice.getMoviePosterResizeHeight(), true);
+            Bitmap resizedErrorBMP = Bitmap.createScaledBitmap(errorBMP, RunningDeviceProps.getMoviePosterResizeWidth(),
+                    RunningDeviceProps.getMoviePosterResizeHeight(), true);
             mErrorDrawable = new BitmapDrawable(mContext.getResources(), resizedErrorBMP);
 
         } catch (Exception e) {

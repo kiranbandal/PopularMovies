@@ -1,11 +1,10 @@
-package com.kirangisp.fragmenthelpermodule;
+package com.example;
 
 /**
- * This class will hold the various properties of the device on which this app is running like,
- * Screen size (smaller/larger etc.), device density (ldpi/mdpi,xhdpi,xxhdpi,xxxhdpi...), orientation,
- * Movie Poster ImageView width and height, resize width and height of movie poster image
+ * Created by User on 15-Nov-15.
  */
-public class RunningDevice {
+public class RunningDeviceProps {
+
 
     //region Enum for holding the device orientation
     public enum DeviceOrientation {
@@ -17,7 +16,7 @@ public class RunningDevice {
 
     //region Constructor
     //Empty Constructor
-    public RunningDevice() {
+    public RunningDeviceProps() {
 
     }
     //endregion
@@ -144,6 +143,4 @@ public class RunningDevice {
     private static int movieDetailsPosterResizeWidth;
     private static int movieDetailsPosterResizeHeight;
     //endregion
-
-
 }

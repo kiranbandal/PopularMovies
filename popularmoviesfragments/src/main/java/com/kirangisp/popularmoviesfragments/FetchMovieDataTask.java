@@ -2,30 +2,21 @@ package com.kirangisp.popularmoviesfragments;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.TransactionTooLargeException;
 import android.util.Log;
 
 import com.example.FetchMovieRequest;
 import com.example.FetchMovieRequestType;
 import com.example.GlobalObjects;
-import com.example.MovieData;
-import com.example.MovieDetails;
 import com.kirangisp.fragmenthelpermodule.CommonFunctions;
 import com.kirangisp.fragmenthelpermodule.CustomJSONParser;
-import com.kirangisp.fragmenthelpermodule.HelperModuleMovieData;
-import com.kirangisp.fragmenthelpermodule.HelperModuleMovieDetails;
 import com.kirangisp.fragmenthelpermodule.MovieResponseHandler;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Async Task to get the movie data from the moviedb api. Same task is used

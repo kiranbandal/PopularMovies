@@ -13,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.GlobalObjects;
-import com.example.MovieData;
-import com.example.MovieDetails;
+import com.example.RunningDeviceProps;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -99,8 +98,8 @@ public class MovieResponseHandler {
                         .placeholder(mPlaceHolderDrawable)
                         .error(mErrorDrawable)
                         .resize(
-                        RunningDevice.getMovieDetailsPosterResizeWidth(),
-                        RunningDevice.getMovieDetailsPosterResizeHeight())
+                                RunningDeviceProps.getMovieDetailsPosterResizeWidth(),
+                                RunningDeviceProps.getMovieDetailsPosterResizeHeight())
                         .into(moviePosterImgView);
             }
             catch (ClassCastException ex) {
@@ -156,8 +155,8 @@ public class MovieResponseHandler {
         try {
             //get Place holder image from Drawable
             Bitmap placeHolderBMP = BitmapFactory.decodeResource(cntxt.getResources(), R.drawable.placeholder);
-            Bitmap resizedPlaceHolderBMP = Bitmap.createScaledBitmap(placeHolderBMP, RunningDevice.getMoviePosterResizeWidth(),
-                    RunningDevice.getMoviePosterResizeHeight(), true);
+            Bitmap resizedPlaceHolderBMP = Bitmap.createScaledBitmap(placeHolderBMP, RunningDeviceProps.getMoviePosterResizeWidth(),
+                    RunningDeviceProps.getMoviePosterResizeHeight(), true);
             mPlaceHolderDrawable = new BitmapDrawable(cntxt.getResources(), resizedPlaceHolderBMP);
 
         } catch (Exception e) {
@@ -170,8 +169,8 @@ public class MovieResponseHandler {
         try {
             //get Place holder image from Drawable
             Bitmap errorBMP = BitmapFactory.decodeResource(cntxt.getResources(), R.drawable.error);
-            Bitmap resizedErrorBMP = Bitmap.createScaledBitmap(errorBMP, RunningDevice.getMoviePosterResizeWidth(),
-                    RunningDevice.getMoviePosterResizeHeight(), true);
+            Bitmap resizedErrorBMP = Bitmap.createScaledBitmap(errorBMP, RunningDeviceProps.getMoviePosterResizeWidth(),
+                    RunningDeviceProps.getMoviePosterResizeHeight(), true);
             mErrorDrawable = new BitmapDrawable(cntxt.getResources(), resizedErrorBMP);
 
         } catch (Exception e) {

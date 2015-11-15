@@ -1,8 +1,6 @@
 package com.kirangisp.fragmenthelpermodule;
 
 import com.example.GlobalObjects;
-import com.example.MovieData;
-import com.example.MovieDetails;
 
 import org.json.JSONArray;
 import org.json.JSONException;
