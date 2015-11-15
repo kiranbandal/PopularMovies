@@ -155,8 +155,8 @@ public class MovieResponseHandler {
         try {
             //get Place holder image from Drawable
             Bitmap placeHolderBMP = BitmapFactory.decodeResource(cntxt.getResources(), R.drawable.placeholder);
-            Bitmap resizedPlaceHolderBMP = Bitmap.createScaledBitmap(placeHolderBMP, RunningDeviceProps.getMoviePosterResizeWidth(),
-                    RunningDeviceProps.getMoviePosterResizeHeight(), true);
+            Bitmap resizedPlaceHolderBMP = Bitmap.createScaledBitmap(placeHolderBMP, RunningDeviceProps.getMovieDetailsPosterResizeWidth(),
+                    RunningDeviceProps.getMovieDetailsPosterResizeHeight(), true);
             mPlaceHolderDrawable = new BitmapDrawable(cntxt.getResources(), resizedPlaceHolderBMP);
 
         } catch (Exception e) {
@@ -169,8 +169,8 @@ public class MovieResponseHandler {
         try {
             //get Place holder image from Drawable
             Bitmap errorBMP = BitmapFactory.decodeResource(cntxt.getResources(), R.drawable.error);
-            Bitmap resizedErrorBMP = Bitmap.createScaledBitmap(errorBMP, RunningDeviceProps.getMoviePosterResizeWidth(),
-                    RunningDeviceProps.getMoviePosterResizeHeight(), true);
+            Bitmap resizedErrorBMP = Bitmap.createScaledBitmap(errorBMP, RunningDeviceProps.getMovieDetailsPosterResizeWidth(),
+                    RunningDeviceProps.getMovieDetailsPosterResizeHeight(), true);
             mErrorDrawable = new BitmapDrawable(cntxt.getResources(), resizedErrorBMP);
 
         } catch (Exception e) {
