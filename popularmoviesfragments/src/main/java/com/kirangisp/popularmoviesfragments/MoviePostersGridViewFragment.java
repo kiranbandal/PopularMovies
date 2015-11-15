@@ -15,7 +15,12 @@ import android.widget.GridView;
 import com.example.FetchMovieRequest;
 import com.example.FetchMovieRequestType;
 import com.example.GlobalObjects;
+import com.kirangisp.fragmenthelpermodule.CommonFunctions;
+import com.kirangisp.fragmenthelpermodule.HelperModuleMovieData;
 import com.kirangisp.fragmenthelpermodule.MoviePostersFragmentHelper;
+import com.kirangisp.fragmenthelpermodule.MovieResponseHandler;
+
+import java.util.ArrayList;
 
 
 /**
@@ -30,8 +35,6 @@ public class MoviePostersGridViewFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Nullable
@@ -49,16 +52,48 @@ public class MoviePostersGridViewFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        try {
+            //save our array list of HelperModuleMovieData here
+            outState.putParcelableArrayList(CommonFunctions.getMoviePostersDataKey(),
+                    CommonFunctions.getMoviePosterInfoArrayLst());
+
+        }catch (Exception e){
+            String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "onSaveInstanceState()", e.getMessage());
+            Log.e(POSTERS_GRIDVIEW_FRAGMENT_LOg_TAG, errMsg);
+        }
+
+
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         try{
 
-            /*set global Running Device properties like
-            * Device density, orientation,
-            * */
+             //set global Running Device properties like Device density, orientation,
             MoviePostersFragmentHelper.setGlobalDeviceImgeViewProps(getActivity());
 
+            //meaning, fragment is being created due to device orientation change
+            if (savedInstanceState != null &&
+                    savedInstanceState.getParcelableArrayList(CommonFunctions.getMoviePostersDataKey()) != null){
+
+                //create instance of response handler and depending in request typr, call the appropriate method
+                MovieResponseHandler responseHandler = new MovieResponseHandler();
+
+                //get the ArrayList from the bundle
+                ArrayList<HelperModuleMovieData> moviePostersData =
+                        savedInstanceState.getParcelableArrayList(CommonFunctions.getMoviePostersDataKey());
+
+                responseHandler.displayMoviePosters(moviePostersData,
+                        getActivity(),R.id.moviePostersGrdView);
+                return;
+            }
+
+            //region Fetch movie data from movie dp using network call, since fragment is created for the first time
             //here we have to read the URL value from Global Constants
             String getPopularMoviesURL = GlobalObjects.getPopularMoviesURL() + GlobalObjects.getMovieApiKey();
 
@@ -72,6 +107,7 @@ public class MoviePostersGridViewFragment extends Fragment {
 
             //execute the task
             new FetchMovieDataTask(rqst, getActivity()).execute();
+            //endregion
 
         }catch (NullPointerException nullExec){
 

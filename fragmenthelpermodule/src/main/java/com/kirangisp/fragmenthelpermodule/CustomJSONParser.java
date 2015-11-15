@@ -28,7 +28,7 @@ public class CustomJSONParser {
     }
     //endregion
 
-    public MovieDetails getMovieDetails() {
+    public HelperModuleMovieDetails getMovieDetails() {
 
         try {
 
@@ -41,14 +41,15 @@ public class CustomJSONParser {
             String posterPath = jsonObj.getString("poster_path");
             String synopsis = jsonObj.getString("overview");
 
-            return new MovieDetails(posterPath,
+            return new HelperModuleMovieDetails(posterPath,
                     null,
                     ttl,
                     relaseDate,
                     vote,
                     synopsis);
 
-        } catch (JSONException ex) {
+        }
+        catch (JSONException ex) {
             return null;
 
         } catch (Exception e) {
@@ -61,10 +62,10 @@ public class CustomJSONParser {
 * while fetching data for all favorite movies
 *
 * */
-    public ArrayList<MovieData> parseFavoriteMoviesJSON() {
+    public ArrayList<HelperModuleMovieData> parseFavoriteMoviesJSON() {
 
         //Array List will be returned
-        ArrayList<MovieData> favoriteMoviesDataArrayList = new ArrayList<MovieData>();
+        ArrayList<HelperModuleMovieData> favoriteMoviesDataArrayList = new ArrayList<HelperModuleMovieData>();
 
         try {
 
@@ -83,7 +84,7 @@ public class CustomJSONParser {
                 JSONObject movieJson = resultsJsonObjectsArray.getJSONObject(i);
 
                 //read values from json object and pass them in MovieInfo instance
-                MovieData movieInfo = new MovieData
+                HelperModuleMovieData movieInfo = new HelperModuleMovieData
                         (movieJson.getString("poster_path"),
                                 movieJson.getString("id"));
 

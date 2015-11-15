@@ -10,7 +10,10 @@ import com.example.FetchMovieRequestType;
 import com.example.GlobalObjects;
 import com.example.MovieData;
 import com.example.MovieDetails;
+import com.kirangisp.fragmenthelpermodule.CommonFunctions;
 import com.kirangisp.fragmenthelpermodule.CustomJSONParser;
+import com.kirangisp.fragmenthelpermodule.HelperModuleMovieData;
+import com.kirangisp.fragmenthelpermodule.HelperModuleMovieDetails;
 import com.kirangisp.fragmenthelpermodule.MovieResponseHandler;
 
 import java.io.BufferedReader;
@@ -125,33 +128,16 @@ public class FetchMovieDataTask extends AsyncTask<Void, Void, String> {
     }
 
     /*
-    * Function to return the HashMap that contains, the IDs of the needed views
-    * on the Movie Details Info fragment
-    * */
-    private HashMap getMovieDetailFragViews(){
-        try{
+* Function to return the HashMap that contains, the IDs of the needed views
+* on the Movie Details Info fragment
+* */
 
-            //create HashMap and push the IDs of required views to it
-            HashMap viewIDsHashMap = new HashMap();
-            viewIDsHashMap.put(GlobalObjects.getTitleTextViewKey(),R.id.titleTextView);
-            viewIDsHashMap.put(GlobalObjects.getReleaseDateTextViewKey(),R.id.releaseDateTextview);
-            viewIDsHashMap.put(GlobalObjects.getVoteTextViewKey(),R.id.voteTextView);
-            viewIDsHashMap.put(GlobalObjects.getSynopsisTextViewKey(),R.id.synopTextView);
-            viewIDsHashMap.put(GlobalObjects.getReleaseDateLiteralTextViewKey(),R.id.releaseDateTextLiteral);
-            viewIDsHashMap.put(GlobalObjects.getVoteLiteralTextViewKey(),R.id.voteTextLiteral);
-            viewIDsHashMap.put(GlobalObjects.getPosterImageViewKey(),R.id.moviePosterImgView);
 
-            return viewIDsHashMap;
-        }catch (Exception e){
-
-            return null;
-        }
-    }
     @Override
     protected void onPostExecute(String taskOuput) {
 
         try {
-            //create instance of response handler and depending in request typr, call the appropriate method
+            //create instance of response handler and depending in request type, call the appropriate method
             MovieResponseHandler responseHandler = new MovieResponseHandler();
 
             String rawMovieJson = taskOuput;
@@ -162,16 +148,22 @@ public class FetchMovieDataTask extends AsyncTask<Void, Void, String> {
 
             if (mRequest.getRequestType() == FetchMovieRequestType.DETAIL_OF_SINGLE_MOVIE) {
                 //get the needed movie details by parsing it
-                MovieDetails movieDetl = new CustomJSONParser(rawMovieJson).getMovieDetails();
-                responseHandler.displayMovieDetails(mAppContext, movieDetl, getMovieDetailFragViews());
+                CommonFunctions.setMovieDetailsInfo(new CustomJSONParser(rawMovieJson).getMovieDetails());
+
+                responseHandler.displayMovieDetails(mAppContext,
+                        CommonFunctions.getMovieDetailsInfo(),
+                        MovieDetailsInfoFragment.getMovieDetailFragViews());
             }
 
             else {
             /*for all other request types, same method from the handler will be called
             * Call the json parser class and get the ArrayList of movie info objects.
             * */
-                ArrayList<MovieData> movieInfoCollection = new CustomJSONParser(rawMovieJson).parseFavoriteMoviesJSON();
-                responseHandler.displayMoviePosters(movieInfoCollection, mAppContext,R.id.moviePostersGrdView);
+
+                //save the ArrayList in global property so that it can be accessed on the reqd fragment
+                CommonFunctions.setMoviePosterInfoArrayLst(new CustomJSONParser(rawMovieJson).parseFavoriteMoviesJSON());
+                responseHandler.displayMoviePosters(CommonFunctions.getMoviePosterInfoArrayLst(),
+                        mAppContext,R.id.moviePostersGrdView);
             }
 
         } catch (NullPointerException ex) {

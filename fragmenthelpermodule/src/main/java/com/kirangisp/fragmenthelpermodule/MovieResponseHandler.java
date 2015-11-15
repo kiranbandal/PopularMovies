@@ -30,7 +30,7 @@ public class MovieResponseHandler {
     private Drawable mPlaceHolderDrawable = null;
     private Drawable mErrorDrawable = null;
 
-    public void displayMovieDetails(Context appContext, MovieDetails movieDtls, HashMap movieDetailsFragViewIDs) {
+    public void displayMovieDetails(Context appContext, HelperModuleMovieDetails movieDtls, HashMap movieDetailsFragViewIDs) {
 
         try {
 
@@ -136,7 +136,7 @@ public class MovieResponseHandler {
     /*
       * Display posters of favorite movies (count :twenty by design of movie db api)
       * */
-    public void displayMoviePosters(ArrayList<MovieData> moviePostersDataInList, Context context, int moviePostersGridView) {
+    public void displayMoviePosters(ArrayList<HelperModuleMovieData> moviePostersDataInList, Context context, int moviePostersGridView) {
 
         try {
 

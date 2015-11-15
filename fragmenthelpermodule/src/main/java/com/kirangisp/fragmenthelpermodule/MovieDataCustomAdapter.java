@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class MovieDataCustomAdapter extends BaseAdapter {
 
     private Context mContext; //for creating new image view
-    private ArrayList<MovieData> mMovieDataList; //to hold the movies data passed in in the constructor
+    private ArrayList<HelperModuleMovieData> mMovieDataList; //to hold the movies data passed in in the constructor
 
     private String mMoviePosterBaseURL; //to get the actual url of the movies poster
     private String mPosterImageSize;
@@ -35,7 +35,7 @@ public class MovieDataCustomAdapter extends BaseAdapter {
     private Drawable mPlaceHolderDrawable = null;
     private Drawable mErrorDrawable = null;
 
-    public MovieDataCustomAdapter(Context c, ArrayList<MovieData> movieDataList) {
+    public MovieDataCustomAdapter(Context c, ArrayList<HelperModuleMovieData> movieDataList) {
         //set member variables
         this.mContext = c;
         this.mMovieDataList = movieDataList;

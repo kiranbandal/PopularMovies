@@ -14,6 +14,11 @@ import android.widget.ImageView;
 import com.example.FetchMovieRequest;
 import com.example.FetchMovieRequestType;
 import com.example.GlobalObjects;
+import com.kirangisp.fragmenthelpermodule.CommonFunctions;
+import com.kirangisp.fragmenthelpermodule.HelperModuleMovieDetails;
+import com.kirangisp.fragmenthelpermodule.MovieResponseHandler;
+
+import java.util.HashMap;
 
 /**
  * Created by User on 04-Nov-15.
@@ -37,6 +42,43 @@ public class MovieDetailsInfoFragment extends Fragment {
         return mFragmenRoot;
     }
 
+    //save the data which is being displayed here, so that it can be used when in onActivityCreated event.
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        //save the movie details which are currently being displayed in the Bundle
+        //so that they can be accesses in onActivityCreated when the orientation is chaned
+        try {
+            outState.putParcelable(CommonFunctions.getMovieDetailsKey(),
+                    CommonFunctions.getMovieDetailsInfo());
+        } catch (Exception e) {
+            String errMsg = GlobalObjects.constructErrorMsg("Generic Exception", "onSaveInstanceState()", e.getMessage());
+            Log.e(MOVIE_DETAILS_FRAG_LOG_TAG, errMsg);
+        }
+    }
+
+    public static HashMap getMovieDetailFragViews() {
+        try {
+
+
+            //create HashMap and push the IDs of required views to it
+            HashMap viewIDsHashMap = new HashMap();
+            viewIDsHashMap.put(GlobalObjects.getTitleTextViewKey(), R.id.titleTextView);
+            viewIDsHashMap.put(GlobalObjects.getReleaseDateTextViewKey(), R.id.releaseDateTextview);
+            viewIDsHashMap.put(GlobalObjects.getVoteTextViewKey(), R.id.voteTextView);
+            viewIDsHashMap.put(GlobalObjects.getSynopsisTextViewKey(), R.id.synopTextView);
+            viewIDsHashMap.put(GlobalObjects.getReleaseDateLiteralTextViewKey(), R.id.releaseDateTextLiteral);
+            viewIDsHashMap.put(GlobalObjects.getVoteLiteralTextViewKey(), R.id.voteTextLiteral);
+            viewIDsHashMap.put(GlobalObjects.getPosterImageViewKey(), R.id.moviePosterImgView);
+
+            return viewIDsHashMap;
+        } catch (Exception e) {
+
+            return null;
+        }
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -45,6 +87,22 @@ public class MovieDetailsInfoFragment extends Fragment {
             //get the movie id that was selected and passed to the detail activity
             String selectedMovieID = getActivity().getIntent().getStringExtra(GlobalObjects.getSelectedMovieIdLiteral());
 
+            //meaning, the fragment is being created due to change in the device orientation
+            if (savedInstanceState != null && savedInstanceState.getParcelable(CommonFunctions.getMovieDetailsKey()) != null) {
+
+                //get the instance of MovieDetailsInfo from the bundle
+                HelperModuleMovieDetails movieDetals =
+                        savedInstanceState.getParcelable(CommonFunctions.getMovieDetailsKey());
+
+                //instance of Response handelr class
+                MovieResponseHandler responseHandler = new MovieResponseHandler();
+                responseHandler.displayMovieDetails(getActivity(),
+                        movieDetals,
+                        getMovieDetailFragViews());
+                return;
+            }
+
+            //region Get Movie detail using netwrok call since fragment is being created for the first time
             //construct the URL by reading values from the Global Constants class and using the movie id
             String getSelectedMovieDetailsURL =
                     GlobalObjects.getMovieDetailsURLPart1()
@@ -59,6 +117,7 @@ public class MovieDetailsInfoFragment extends Fragment {
 
             //execute the task
             new FetchMovieDataTask(rqst, getActivity()).execute();
+            //endregion
 
         } catch (NullPointerException ex) {
             String errMsg = GlobalObjects.constructErrorMsg("Null Pointer Exception", "onActivityCreated()", ex.getMessage());
