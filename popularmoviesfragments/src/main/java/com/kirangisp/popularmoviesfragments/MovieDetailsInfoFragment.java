@@ -37,76 +37,11 @@ public class MovieDetailsInfoFragment extends Fragment {
         return mFragmenRoot;
     }
 
-    /*
-    * When the movie details info is being rendered, the textual info like, Release date ,Vote etc.
-    * was initially being placed at the top of the fragment, because Image rendering happens after a bit.
-    * To fix this, the Movie Poster Image is being given the minimum size depending on the device density.
-    *
-    * */
-    private void setImageViewDimension() {
-        try {
-
-            //handle the size of the movie poster image view here
-            ImageView posterView = (ImageView) mFragmenRoot.findViewById(R.id.moviePosterImgView);
-
-            //load image into the movie poster image view using Picasso, resize it depending on te screen density
-
-            //for LDPI and MDPI
-            if (GlobalObjects.getDeviceDensity() == 1.0) {
-
-                //get device screen size
-                int screenSize = getActivity().getResources().getConfiguration().screenLayout &
-                        Configuration.SCREENLAYOUT_SIZE_MASK;
-
-                if (screenSize == Configuration.SCREENLAYOUT_SIZE_SMALL) {
-                    posterView.setMinimumWidth(130);
-                    posterView.setMinimumHeight(150);
-
-                } else {
-
-                    //larger and medium screen size
-                    posterView.setMinimumWidth(250);
-                    posterView.setMinimumHeight(300);
-                }
-            }
-
-            else if (GlobalObjects.getDeviceDensity() == 1.5) {
-                //hdpi
-                posterView.setMinimumWidth(250);
-                posterView.setMinimumHeight(325);
-
-            } else if (GlobalObjects.getDeviceDensity() == 2) {
-                //x hdpi
-                posterView.setMinimumWidth(400);
-                posterView.setMinimumHeight(525);
-            } else if (GlobalObjects.getDeviceDensity() == 3) {
-                //xx hdpi
-                posterView.setMinimumWidth(600);
-                posterView.setMinimumHeight(825);
-
-            } else if (GlobalObjects.getDeviceDensity() == 4) {
-                //xxx hdpi, higer then nexux 5
-                posterView.setMinimumWidth(800);
-                posterView.setMinimumHeight(1000);
-
-            }
-        } catch (NullPointerException e) {
-            Log.e("movieDetailsFragLogTag", "Null Reference Error occured in the method,setImageViewDimension(), error : " +
-                    e.getMessage());
-        } catch (Exception e) {
-            Log.e("movieDetailsFragLogTag", "Error occured in the method,setImageViewDimension(), error : " +
-                    e.getMessage());
-        }
-    }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         try {
-
-            setImageViewDimension();
-
             //get the movie id that was selected and passed to the detail activity
             String selectedMovieID = getActivity().getIntent().getStringExtra(GlobalObjects.getSelectedMovieIdLiteral());
 
