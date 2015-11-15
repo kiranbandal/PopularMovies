@@ -197,7 +197,7 @@ public class MoviePostersFragmentHelper {
     //endregion
 
     //region For LDPI and MDPI - Large screen
-    private static void setLdpiMdpiLargecreenPortraitProps() {
+    private static void setLdpiMdpiLargeScreenPortraitProps() {
         //image size to be queried from the movie db api
         RunningDeviceProps.setImgSizeToBeQueried("w92/");
 
@@ -213,7 +213,7 @@ public class MoviePostersFragmentHelper {
         RunningDeviceProps.setMoviePosterResizeWidth(130);
     }
 
-    private static void setLdpiMdpiLargecreenLandscapeProps() {
+    private static void setLdpiMdpiLargeScreenLandscapeProps() {
         //image size to be queried from the movie db api
         RunningDeviceProps.setImgSizeToBeQueried("w92/");
 
@@ -272,9 +272,14 @@ public class MoviePostersFragmentHelper {
 
                 } else {
                     //medium and large screen (LDPI and MDPI)
-                    if (RunningDeviceProps.getOrientation() == RunningDeviceProps.DeviceOrientation.LANDSCAPE) {
+                    if (RunningDeviceProps.getOrientation() == RunningDeviceProps.DeviceOrientation.PORTRAIT) {
 
                         //Portrait orientation
+
+                        //Set resize dimensions for Movie Details Fragment
+                        RunningDeviceProps.setMovieDetailsPosterResizeWidth(250);
+                        RunningDeviceProps.setMovieDetailsPosterResizeHeight(325);
+
                         //image size to be queried from the movie db api
                         RunningDeviceProps.setImgSizeToBeQueried("w154/");
 
@@ -288,12 +293,16 @@ public class MoviePostersFragmentHelper {
                         //set resize width/height of the image
                         RunningDeviceProps.setMoviePosterResizeHeight(285);
                         RunningDeviceProps.setMoviePosterResizeWidth(245);
-                    } else {
+                    }
+
+                    else {
+
+                        //Set resize dimensions for Movie Details Fragment
+                        RunningDeviceProps.setMovieDetailsPosterResizeWidth(250);
+                        RunningDeviceProps.setMovieDetailsPosterResizeHeight(325);
 
                         //for landscape orientation
-
-                        String a;
-                        a = "sdf";
+                        setHDPILandscapeProps();
                     }
 
                 }
