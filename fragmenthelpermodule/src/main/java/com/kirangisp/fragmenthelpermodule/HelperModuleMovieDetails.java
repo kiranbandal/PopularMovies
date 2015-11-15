@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by User on 15-Nov-15.
+ * This class is used on MovieDetailInfoFragments to show the details of a selected movie. This class implements Parcelable
+ * so that instance of this class can be saved into the Bundle.
  */
 public class HelperModuleMovieDetails extends HelperModuleMovieData implements Parcelable {
 

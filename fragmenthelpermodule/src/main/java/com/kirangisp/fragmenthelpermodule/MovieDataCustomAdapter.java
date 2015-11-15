@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
- * Created by User on 13-Nov-15.
+ * Custom adapter which is used to show the movie posters in the Movie Posters Fragment.
  */
 public class MovieDataCustomAdapter extends BaseAdapter {
 

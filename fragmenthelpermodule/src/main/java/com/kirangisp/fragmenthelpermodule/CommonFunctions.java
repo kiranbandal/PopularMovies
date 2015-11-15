@@ -1,12 +1,12 @@
 package com.kirangisp.fragmenthelpermodule;
 
-import com.example.GlobalObjects;
-
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 /**
- * Created by User on 15-Nov-15.
+ * Holds the global objects fro holding ArrayList of Movie Posters and instance of Movie Detail Info
+ * to be used across the application. Also, KEY string to save these global objects into Bundle
+ * are defined here.
  */
 public class CommonFunctions {
 

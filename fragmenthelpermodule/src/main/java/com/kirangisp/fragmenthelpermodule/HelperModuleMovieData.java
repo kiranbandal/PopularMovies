@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by User on 15-Nov-15.
+ * ArrayList of this class is used on MoviePosters fragment. Also, this class implements Parcelable
+ * so that ArrayList of instances of this class can be saved into Bundle.
  */
 public class HelperModuleMovieData implements Parcelable{
 

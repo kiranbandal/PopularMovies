@@ -9,7 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * Created by User on 14-Nov-15.
+ * Exposes the functions to parse the raw json retrieved from the movie db api. These functions return
+ * the result in needed types like HelperModulrMovieDetails and ArrayList of HelperModuleMovieData
  */
 public class CustomJSONParser {
     private String mInputJSONString;

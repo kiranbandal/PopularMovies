@@ -7,10 +7,9 @@ import android.util.Log;
 
 import com.example.GlobalObjects;
 import com.example.RunningDeviceProps;
-import com.example.RunningDeviceProps;
 
 /**
- * Helper class to set the global properties of device sensity, orientation
+ * Helper class to set the global properties of device density, orientation
  * movie poster imageview size and re-size dimensions
  */
 public class MoviePostersFragmentHelper {
@@ -53,6 +52,7 @@ public class MoviePostersFragmentHelper {
 
     }
     //endregion
+
     //region For XX HDPI
     private static void setXxHDPIPortraitProps() {
 
@@ -231,6 +231,8 @@ public class MoviePostersFragmentHelper {
     //endregion
 
 
+    //Called from the fragment. This method in turn calls the other private methods in this class
+    //depending on the device density and orientation.
     public static void setGlobalDeviceImgeViewProps(Context appContext) {
 
         try {
@@ -245,10 +247,10 @@ public class MoviePostersFragmentHelper {
                     Configuration.SCREENLAYOUT_SIZE_MASK;
 
             //set current device orientation
-            if (((Activity) appContext).getResources().getConfiguration().orientation == 1) {
+            if ((appContext.getResources().getConfiguration().orientation == 1)) {
 
                 RunningDeviceProps.setOrientation(RunningDeviceProps.DeviceOrientation.PORTRAIT);
-            } else if (((Activity) appContext).getResources().getConfiguration().orientation == 2) {
+            } else if (appContext.getResources().getConfiguration().orientation == 2) {
                 RunningDeviceProps.setOrientation(RunningDeviceProps.DeviceOrientation.LANDSCAPE);
             }
 
